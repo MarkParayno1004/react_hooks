@@ -6,63 +6,31 @@ import UseRefTutorial from "./components/UseRefTutorial";
 import UseStateTutorial from "./components/UseStateTutorial";
 import UseLayoutEffect from "./components/UseLayoutEffect";
 
+const tutorials = [
+  { title: "useState", component: <UseStateTutorial /> },
+  { title: "useReducer", component: <UseReducerTutorial /> },
+  { title: "useEffect", component: <UseEffectTutorial /> },
+  { title: "useRef", component: <UseRefTutorial /> },
+  { title: "UseLayoutEffect", component: <UseLayoutEffect /> },
+];
+
 function App() {
   return (
     <React.Fragment>
-      <div
-        style={{
-          borderColor: "red",
-          borderStyle: "solid",
-          padding: 50,
-        }}
-      >
-        <h1>useState</h1>
-        <UseStateTutorial />
-      </div>
-      <div
-        style={{
-          borderColor: "red",
-          borderStyle: "solid",
-          padding: 50,
-          marginTop: 10,
-        }}
-      >
-        <h1>useReducer</h1>
-        <UseReducerTutorial />
-      </div>
-      <div
-        style={{
-          borderColor: "red",
-          borderStyle: "solid",
-          padding: 50,
-          marginTop: 10,
-        }}
-      >
-        <h1>useEffect</h1>
-        <UseEffectTutorial />
-      </div>
-      <div
-        style={{
-          borderColor: "red",
-          borderStyle: "solid",
-          padding: 50,
-          marginTop: 10,
-        }}
-      >
-        <h1>useRef</h1>
-        <UseRefTutorial />
-      </div>
-      <div
-        style={{
-          borderColor: "red",
-          borderStyle: "solid",
-          padding: 50,
-          marginTop: 10,
-        }}
-      >
-        <h1>UseLayoutEffect</h1>
-        <UseLayoutEffect />
-      </div>
+      {tutorials.map((tutorial, index) => (
+        <div
+          key={index}
+          style={{
+            borderColor: "red",
+            borderStyle: "solid",
+            padding: 50,
+            marginTop: index === 0 ? 0 : 10,
+          }}
+        >
+          <h1>{tutorial.title}</h1>
+          {tutorial.component}
+        </div>
+      ))}
     </React.Fragment>
   );
 }
